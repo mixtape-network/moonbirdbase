@@ -1,0 +1,364 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>moonbirdbase</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="moonbirdbase" />
+<meta name="twitter:description" content="The entire Moonbirds NFT universe in a single Git repository." />
+<meta name="twitter:image" content="https://moonbirdbase.mixtape.network/mixtape.png" />
+<meta property="og:url" content="https://moonbirdbase.mixtape.network" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="moonbirdbase" />
+<meta property="og:description" content="The entire Moonbirds NFT universe in a single Git repository." />
+<meta property="og:image" content="https://moonbirdbase.mixtape.network/mixtape.png" />
+<style>
+@font-face {
+    font-family: 'visitor_tt1_brkregular';
+    src: url('visitor1-webfont.woff2') format('woff2'),
+         url('visitor1-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'visitor_tt2_brkregular';
+    src: url('visitor2-webfont.woff2') format('woff2'),
+         url('visitor2-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+  font-family: Sans-serif;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: rgba(0,0,255,0.04);
+}
+nav {
+  text-align: center;
+  padding: 40px 0 20px 0;
+  color: black;
+  opacity: 0.9;
+}
+.sub {
+  font-size: 14px;
+}
+input[type=text] {
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+  background: white;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+textarea {
+  width: 100%;
+  height: 50px;
+  background: white;
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 5px;
+  box-sizing: border-box;
+}
+nav a {
+  font-family: 'visitor_tt1_brkregular', sans-serif;
+  /*
+  letter-spacing: -3px;
+  */
+  text-decoration: none;
+  font-size: 40px;
+  font-weight: bold;
+  display: inline-block;
+  margin: 10px;
+  color: black;
+}
+nav td:nth-child(1) {
+  width: 100px;
+  font-weight: bold;
+  text-align: right;
+  vertical-align: middle;
+}
+nav table {
+  max-width: 800px;
+  margin: 0 auto;
+  width: 90%;
+}
+nav td {
+  background: none;
+  color: black;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px 0;
+}
+.item {
+  width: 200px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+.item img {
+  width: 100%;
+}
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-spacing: 0;
+}
+td {
+  background: white;
+  vertical-align: top;
+  word-wrap:break-word;
+  padding: 7px;
+  box-sizing: border-box;
+  font-size: 13px;
+  cursor: pointer;
+}
+.container td:nth-child(1) {
+  font-weight: bold;
+}
+.container td {
+  border-bottom: 2px solid rgba(0,0,255,0.04);
+}
+.container tr:hover td {
+  background: lavender;
+}
+#query {
+  margin-top: 5px;
+  background: royalblue;
+  cursor: pointer;
+  padding: 10px;
+  max-width: 800px;
+  width: 90%;
+  box-sizing: border-box;
+  color: white;
+  border-radius: 4px;
+  border:none;
+  font-size: 20px;
+  font-family: 'visitor_tt1_brkregular', sans-serif;
+}
+.btn {
+  font-family: Sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  letter-spacing: 0;
+  background: rgba(0,0,0,0.9);
+  color: white;
+  padding: 5px 10px;
+  margin: 20px 0;
+  border-radius: 2px;
+}
+.loader {
+  padding: 100px;
+  font-size: 14px;
+  opacity: 0.9;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.loading {
+  display: inline-block;
+  overflow: hidden;
+  height: 1.3em;
+  margin-top: -0.3em;
+  line-height: 1.5em;
+  vertical-align: text-bottom;
+  font-size: 50px;
+  text-align: center;
+  width: 100%;
+}
+.loading::after {
+  display: inline-table;
+  white-space: pre;
+  text-align: left;
+}
+
+/* --- Types --- */
+
+/* default loading is ellip */
+.loading::after {
+  content: "\A.\A..\A...";
+  animation: spin4 2s steps(4) infinite;
+}
+
+.loading.dots::after {
+  content: "⠋\A⠙\A⠹\A⠸\A⠼\A⠴\A⠦\A⠧\A⠇\A⠏";
+  animation: spin10 1s steps(10) infinite;
+}
+
+.loading.dots2::after {
+  content: "⠋\A⠙\A⠚\A⠞\A⠖\A⠦\A⠴\A⠲\A⠳";
+  animation: spin9 1s steps(9) infinite;
+}
+
+.loading.dots3::after {
+  content: "⋮\A⋰\A⋯\A⋱";
+  text-align: center;
+  animation: spin4 1s steps(4) infinite;
+}
+@keyframes spin1  { to { transform: translateY( -1.5em); } }
+@keyframes spin2  { to { transform: translateY( -3.0em); } }
+@keyframes spin3  { to { transform: translateY( -4.5em); } }
+@keyframes spin4  { to { transform: translateY( -6.0em); } }
+@keyframes spin5  { to { transform: translateY( -7.5em); } }
+@keyframes spin6  { to { transform: translateY( -9.0em); } }
+@keyframes spin7  { to { transform: translateY(-10.5em); } }
+@keyframes spin8  { to { transform: translateY(-12.0em); } }
+@keyframes spin9  { to { transform: translateY(-13.5em); } }
+@keyframes spin10 { to { transform: translateY(-15.0em); } }
+@keyframes spin11 { to { transform: translateY(-16.5em); } }
+@keyframes spin12 { to { transform: translateY(-18.0em); } }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/sql-wasm.js"></script>
+<script>
+class Loader {
+  async init() {
+    const sqlPromise = initSqlJs({
+      locateFile: file => "https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/sql-wasm.wasm"
+    });
+    const dataPromise = fetch("mixtape.db").then(res => res.arrayBuffer());
+    const [SQL, buf] = await Promise.all([sqlPromise, dataPromise])
+    this.db = new SQL.Database(new Uint8Array(buf));
+  }
+  next() {
+    let select = document.querySelector("#select").value
+    if (select.length === 0) {
+      select = "*"
+    } else {
+      if (select !== "*") {
+        if (!/.*image.*/.test(select)) {
+          select = select + ", image"
+        }
+        if (!/.*id.*/.test(select)) {
+          select = select + ", id"
+        }
+        if (!/.*uri.*/.test(select)) {
+          select = select + ", uri"
+        }
+      }
+    }
+    let where = document.querySelector("#where").value
+    let limit = parseInt(document.querySelector("#limit").value)
+    let sql = `SELECT ${select} FROM metadata`
+    if (where.length > 0) {
+      sql += ` WHERE ${where}`
+    }
+    if (limit > 0) {
+      sql += ` LIMIT ${limit}`
+    } else {
+      sql += " LIMIT 200"
+    }
+    const contents = this.db.exec(sql)
+    let index = 0;
+    let columns = []
+    let html = ""
+    if (contents.length === 0) {
+      html = "No results"
+    } else {
+      for(let column of contents[0].columns) {
+        columns.push(column)
+      }
+      let properties = []
+      for(let i=0; i<contents[0].values.length; i++) {
+        let values = contents[0].values[i];
+        let o = { attributes: {} }
+        for(let j=0; j<columns.length; j++) {
+          let column = columns[j]
+          if (["id", "name", "description", "image", "blockHash", "blockNumber", "self", "transactionHash", "uri"].includes(column)) {
+            o[column] = values[j]
+          } else {
+            o.attributes[column] = values[j]
+          }
+        }
+        properties.push(o)
+      }
+      console.log(properties)
+      html = properties.map((p) => {
+        let attributes = p.attributes
+        let keys = Object.keys(attributes)
+        let table = keys.map((key) => {
+          return `<tr class='row' data-key='${key}' data-val='${attributes[key]}'><td>${key}</td><td>${attributes[key]}</td></tr>`
+        }).join("")
+        let img
+        if (p.image.startsWith("http")) {
+          img = "files/" + p.image.split("")
+            .map(c => c.charCodeAt(0).toString(16).padStart(2, "0"))
+            .join("");
+        } else if (p.image.startsWith("data:image")) {
+          img = p.image
+        } else if (p.image.startsWith("files/")) {
+          img = p.image
+        } else {
+          img = "ipfs/" + p.image.replace("ipfs://", "")
+        }
+
+        return `<div class='item'>
+  <a target="_blank" href="https://opensea.io/assets/0x23581767a106ae21c074b2276d25e5c3e136a68b/${p.id}"><img src="${img}"></a>
+  <table>${table}</table>
+  </div>`
+      }).join("")
+    }
+
+    document.querySelector(".container").innerHTML = html
+  }
+}
+document.addEventListener("DOMContentLoaded", async () => {
+  const loader = new Loader()
+  await loader.init()
+  loader.next()
+  document.querySelector("#query").addEventListener("click", () => {
+    loader.next()
+  })
+  document.querySelector(".container").addEventListener("click", (e) => {
+    let target = (e.target.className === "row" ? e.target : (e.target.closest(".row") ? e.target.closest(".row") : null))
+    if (target) {
+      let key = target.getAttribute('data-key')
+      let val = target.getAttribute('data-val')
+      let where = document.querySelector("#where").value
+      if (where.trim().length > 0) {
+        document.querySelector("#where").value = `${where} AND\n"${key}" = "${val}"`
+      } else {
+        document.querySelector("#where").value = `"${key}" = "${val}"`
+      }
+      loader.next()
+    }
+  })
+})
+</script>
+</head>
+<body>
+<nav>
+  <a href="/">moonbirdbase</a>
+  <div class='sub'>The entire Moonbirds NFT universe in a single Git repository.</div>
+  <div>
+    <a class='btn' href="https://github.com/mixtape-network/moonbirdbase">Download</a>
+    <a class='btn' href="https://twitter.com/skogard">Twitter</a>
+  </div>
+  <table>
+    <tr>
+      <td>SELECT</td>
+      <td><input id='select' type='text' placeholder='select columns' value='*'></td>
+    </tr>
+    <tr>
+      <td>FROM</td>
+      <td>metadata</td>
+    </tr>
+    <tr>
+      <td>WHERE</td>
+      <td><textarea id='where' placeholder='where condition'></textarea></td>
+    </tr>
+    <tr>
+      <td>LIMIT</td>
+      <td><input id='limit' type='text' placeholder='limmit' value=200></td>
+    </tr>
+  </table>
+  <button id='query'>Query</button>
+</nav>
+<div class='container'>
+  <div class='loader'>
+    <div class='loading dots'></div>
+    <br>
+    <div>loading</div>
+  </div>
+</div>
+</body>
+</html>
